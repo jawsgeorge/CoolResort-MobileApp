@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.myapp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <preference name="loglevel" value="DEBUG" />
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <allow-intent href="market:*" />
+    <icon density="ldpi" src="www/img/icons/ldpi.png" />
+    <icon density="mdpi" src="www/img/icons/mdpi.png" />
+    <icon density="hdpi" src="www/img/icons/hdpi.png" />
+    <icon density="xhdpi" src="www/img/icons/xhdpi.png" />
+    <name>CoolStayzz</name>
+    <description>Home stay management is made much easier with this app!
+		Experience the change ! Have a nice stay!!</description>
+    <author email="abishekknpta@gmail.com" href="http://www.eclipse.org/thym">
+		Eclipse.org -
+		Thym
+	</author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+</widget>

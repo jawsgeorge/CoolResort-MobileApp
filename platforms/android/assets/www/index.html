@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    	<script src="http://code.jquery.com/jquery-2.0.1.min.js">
+    	 	</script>
+    	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: http://52.32.94.204:8080 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>GuestApp</title>
+    </head>
+    <body>
+		<div data-role="page" id="Login">
+			<div data-role="header">
+				<h1>Login</h1>
+			</div>
+			<div data-role="content">
+				<div class="ui-field-contain">
+					<label for="uname">User Name</label>
+					<input name="uname" id="uname" data-clear-btn="true" value="" placeholder="Enter User Name"  type="text"/>
+				</div>
+				<div class="ui-field-contain">
+					<label for="password">Password</label>
+					<input name="password" id="password" data-clear-btn="true" value="" type="password"/>
+				</div>
+				<!--  <a href="#Home" id="button-1" class="ui-btn ui-corner-all">Submit</a>-->
+				<input data-enhanced="true" type="button" value="Submit" id="submitforcheck"/>
+			</div>
+			
+		</div>
+        </div> -->
+        <div data-role="page" id="Home">
+			<div data-role="header">
+				
+				<h1>My Plan App</h1>
+			</div>
+			<div data-role="content">
+			<a href="#Login" id="button-2" class="ui-btn ui-icon-home ui-btn-icon-left ui-corner-all"></a>
+				<div data-role="tabs" id="tabs-1">
+					<div data-role="navbar">
+						<ul>
+							<li><a href="#tab-1a" data-ajax="false">Food</a></li>
+							<li><a href="#tab-1b" data-ajax="false">Games</a></li>
+							<li><a href="#tab-1c" data-ajax="false">Tour Places</a></li>
+						</ul>
+					</div>
+					<div id="tab-1a" class="ui-body-d ui-content">
+						<h4>Food content</h4>
+						
+						
+						<ul id="foodList"> </ul>
+					</div>
+					<div id="tab-1b" class="ui-body-d ui-content">
+						<h4>Games</h4>
+						<!-- <button id="target">Get Contact11</button>
+ --> 						 <ul id="gamesList"></ul>
+ 						 
+					</div>
+					<div id="tab-1c" class="ui-body-d ui-content">
+						<h4>Tour Places</h4>
+					</div>
+				</div>
+				<script>
+					$("#tabs-1").tabs({event: "mouseover"});
+				</script>
+			</div>
+			
+		</div>
+		
+			 <div data-role="page" id="application-status" data-add-back-btn="true">
+        <div data-role="header">
+            <h4>Invoice  Status for </h4>
+        </div>
+        <div id="application-status-content" name="application-status-content" role="main" class="ui-content">
+            <table data-role="table" id="app-status-table" data-mode="reflow" class="ui-responsive table-stroke">
+                <thead>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div data-role="footer"></div>
+    </div>
+		
+		<div data-role="page" id="CuisineOrderPage">
+		<form class="orderForm">
+		<input type="hidden" name="nameOfUserOrdering" id ="nameOfUserOrdering" value="">
+		<div class="ui-field-contain">
+					<label for="fname">Food Name</label>
+					<input name="fname" id="fname" data-clear-btn="true" value="" type="text"/>
+				</div>
+	   <div class="ui-field-contain">
+					<label for="qty">Quantity</label>
+					<input name="quantity" id="quantity" data-clear-btn="true" value="" type="text"/>
+				</div>
+		<div class="ui-field-contain">
+					<label for="fType">Type</label>
+					<select name="fType" id="fType">
+						<option value="breakfast" selected="selected">BreakFast</option>
+						<option value="lunch">Lunch</option>
+						<option value="Dinner">Dinner</option>
+					</select>
+				</div>
+				
+		<div class="ui-input-btn ui-btn ui-corner-all">
+					Order
+					<input data-enhanced="true" type="button" value="Order" id="order"/>
+				</div>
+				</form>
+		</div>
+		
+		
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    	<script src="http://code.jquery.com/jquery-2.0.1.min.js">
+    	 	</script>
+    	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: http://52.32.94.204:8080 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet"  href="http://code.jquery.com/mobile/git/jquery.mobile-git.css" /> 
+		<link rel="stylesheet" href="jquery.mobile.datepicker.css" />
+		<link rel="stylesheet" href="jquery.mobile.datepicker.theme.css" />
+		<script src="external/jquery-ui/datepicker.js"></script>
+			<script src="http://code.jquery.com/mobile/git/jquery.mobile-git.js"></script> 
+			<script src="jquery.mobile.datepicker.js"></script>
+			<script>
+				$(function(){
+					$( ".date-input-css" ).datepicker();
+				})
+			</script>
+		
+        <title>GuestApp</title>
+    </head>
+    <body>
+		<div data-role="page" id="Login">
+			<div data-role="header">
+				<h1>Login</h1>
+			</div>
+			<form class="userLoginPage" id ="userLoginPage">
+			<div data-role="content">
+				<div class="ui-field-contain">
+					<label for="uname">User Name</label>
+					<input name="uname" id="uname" data-clear-btn="true" value="" placeholder="Enter User Name"  type="text"/>
+				</div>
+				<div class="ui-field-contain">
+					<label for="password">Password</label>
+					<input name="password" id="password" data-clear-btn="true" value="" type="password"/>
+				</div>
+				<!--  <a href="#Home" id="button-1" class="ui-btn ui-corner-all">Submit</a>-->
+				<input data-enhanced="true" type="button" value="Submit" id="submitforcheck"/>
+			</div>
+			</form>/
+		</div>
+
+        <div data-role="page" id="Home">
+			<div data-role="header">
+				<h1>My Plan App</h1>
+			</div>
+			<div data-role="content">
+			<a href="#Login" id="button-2" class="ui-btn ui-icon-home ui-btn-icon-left ui-corner-all"></a>
+				<div data-role="tabs" id="tabs-1">
+					<div data-role="navbar">
+						<ul>
+							<li><a href="#tab-1a" data-ajax="false">Food</a></li>
+							<li><a href="#tab-1b" data-ajax="false">Games</a></li>
+							<li><a href="#tab-1c" data-ajax="false">Tour Places</a></li>
+						</ul>
+					</div>
+					<div id="tab-1a" class="ui-body-d ui-content">
+						<h4>Food content</h4>
+						<ul id="foodList"> </ul>
+					</div>
+					<div id="tab-1b" class="ui-body-d ui-content">
+						<h4>Games</h4>
+						 <ul id="gamesList"></ul>
+					</div>
+					<div id="tab-1c" class="ui-body-d ui-content">
+						<h4>Tour Places</h4>
+					</div>
+				</div>
+				<script>
+					$("#tabs-1").tabs({event: "mouseover"});
+				</script>
+			</div>
+		</div>
+		
+	 <div data-role="page" id="application-status" data-add-back-btn="true">
+        <div data-role="header">
+            <h4>Invoice  Status </h4>
+        </div>
+        <div id="application-status-content" name="application-status-content" role="main" class="ui-content">
+            <table data-role="table" id="app-status-table" data-mode="reflow" class="ui-responsive table-stroke">
+                <thead>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div data-role="footer"></div>
+     </div>
+     
+     <div data-role="page" id="booked-status" data-add-back-btn="true">
+     <div data-role="header">
+            <h4>Booked Status </h4>
+        </div>
+        <div id="application-status-content" name="application-status-content" role="main" class="ui-content">
+        	<table data-role="table" id="book-status-table" data-mode="reflow" class="ui-responsive table-stroke">
+                <thead>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+     </div>
+		
+		<div data-role="page" id="CuisineOrderPage">
+		<form class="orderForm">
+		<input type="hidden" name="nameOfUserOrdering" id ="nameOfUserOrdering" value="">
+		<div class="ui-field-contain">
+					<label for="fname">Food Name</label>
+					<input name="fname" id="fname" data-clear-btn="true" value="" type="text"/>
+				</div>
+	   <div class="ui-field-contain">
+					<label for="qty">Quantity</label>
+					<input name="quantity" id="quantity" data-clear-btn="true" required="true" value="" type="text"/>
+				</div>
+		<div class="ui-field-contain">
+					<label for="fType">Type</label>
+					<select name="fType" id="fType">
+						<option value="breakfast" selected="selected">BreakFast</option>
+						<option value="lunch">Lunch</option>
+						<option value="Dinner">Dinner</option>
+					</select>
+				</div>
+				
+		<div class="ui-input-btn ui-btn ui-corner-all">
+					Order
+					<input data-enhanced="true" type="button" value="Order" id="order"/>
+				</div>
+				</form>
+		</div>
+		
+		<div data-role="page" id="gamesBookingPage">
+			<div data-role="content">
+					<form class="gameBookingCheck" id ="gamesBookingCheck">
+					<input type="hidden" name="nameOfUserBooking" id ="nameOfUserBooking" value="">
+					<label for="gamesName">Game Name</label>
+					<input name="gamesName" id="gamesName" data-clear-btn="true" value="" type="text"/>
+					<label for="gamesDate">Pick the Date</label>
+					<!-- <input type="text" id ="gamesDate" data-role="date" data-inline="true" > -->
+					<input type="text" class="date-input" name="gamesDate" id ="gamesDate" data-inline="false" data-role="date">
+					<input data-enhanced="true" type="button" value="FetchSlotList" id="fetchSlotList"/>
+					</form>
+					
+		</div>
+		
+		</div>
+		<div data-role="page" id="gamesSlotStatus">
+		<form class="gameAvailableSlot" id ="gameAvailableSlot">
+					<label for="mySelector">Available slots are</label>
+					  <select name="mySelector" id="mySelector"  multiple data-native-menu="false">
+					    <option>Please Choose</option>                
+					  </select>
+				<input data-enhanced="true" type="button" value="SelectSlots" id="selectSlots"/>
+				<input type="hidden" name="userNameForJson" id ="userNameForJson" value="">
+				<input type="hidden" name="bookingdateForJson" id ="bookingdateForJson" value="">
+				<input type="hidden" name="gameNameForJson" id ="gameNameForJson" value="">
+		</form>
+		</div>
+		<div data-role="page" id="AdminHome">
+			<div data-role="header">
+				<h1>Admin Page</h1>
+			</div>
+			<div data-role="content">
+			<a href="#Login" id="button-2" class="ui-btn ui-icon-home ui-btn-icon-left ui-corner-all"></a>
+				<div data-role="tabs" id="tabs-1">
+					<div data-role="navbar">
+						<ul>
+							<li><a href="#tab-1a" data-ajax="false">Food</a></li>
+							<li><a href="#tab-1b" data-ajax="false">Games</a></li>
+						</ul>
+					</div>
+					<div id="tab-1a" class="ui-body-d ui-content">
+						<h4>Food content</h4>
+						<ul>
+						<li><a href="#createCuisinePage" data-ajax="false">Create Cuisine</a></li>
+						<li><a href="#deleteCuisinePage" data-ajax="false">Delete Cuisine</a></li>
+						</ul>
+					</div>
+					<div id="tab-1b" class="ui-body-d ui-content">
+						<h4>Games</h4>
+						<ul>
+						<li><a href="#createGamePage" data-ajax="false">Create Game</a></li>
+						<li><a href="#deleteGamePage" data-ajax="false">Delete Game</a></li>
+						</ul>
+					</div>
+				</div>
+				<script>
+					$("#tabs-1").tabs({event: "mouseover"});
+				</script>
+				</div>
+			</div>
+			<div data-role="page" id="createCuisinePage">
+				<form class="createCuisineDetails" id ="createCuisineDetails">
+				<label for="cuisinename">Cuisine Name</label>
+				<input name="cuisineName" id="cuisineName" data-clear-btn="true" value="" placeholder="Enter Cuisine Name"  type="text"/>
+				<label for="cuisineAmount">Cuisine Amount</label>
+				<input name="cuisineAmount" id="cuisineAmount" data-clear-btn="true" value="" placeholder="Enter Cuisine Amount"  type="text"/>
+				<label for="cuisineDesc">Cuisine Description</label>
+				<textarea name="cuisineDesc" id="cuisineDesc"></textarea>
+				<input data-enhanced="true" type="button" name ="submitCuisine" value="CreateCuisine" id="submitCuisine"/>
+				</form>
+				<div data-role="popup" id="createCuisineResponse" data-position-to="window" data-transition="turn">
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+				<p><font color="green">Cuisine added successfully</font></p>
+				</div>
+			</div>
+			
+			<div data-role="page" id="deleteCuisinePage">
+				<form class="deleteCuisineDetails" id ="deleteCuisineDetails">
+				<label for="cuisineDelete">Cuisine Id for Deleting</label>
+				<input name="cuisineDeleteId" id="cuisineIdForDelete" data-clear-btn="true" value="" placeholder="Enter Cuisine Id for Deleting"  type="text"/>
+				<input data-enhanced="true" type="button" name ="deleteCuisine" value="DeleteCuisine" id="deleteCuisine"/>
+				</form>
+				<div data-role="popup" id="deleteCuisineResponse" data-position-to="window" data-transition="turn">
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+				<p><font color="green">Cuisine deleted successfully</font></p>
+				</div>
+			</div>
+			<div data-role="page" id="createGamePage">
+				<form class="createGameDetails" id ="createGameDetails">
+				<label for="gamename">Game Name</label>
+				<input name="gameName" id="gameName" data-clear-btn="true" value="" placeholder="Enter Game Name"  type="text"/>
+				<label for="gameDesc">Cuisine Description</label>
+				<textarea name="gameDesc" id="gameDesc"></textarea>
+				<input data-enhanced="true" type="button" name ="submitGame" value="CreateGame" id="submitGame"/>
+				</form>
+				<div data-role="popup" id="createGameResponse" data-position-to="window" data-transition="turn">
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+				<p><font color="green">Game added successfully</font></p>
+				</div>
+			</div>
+			<div data-role="page" id="deleteGamePage">
+				<form class="deleteGameDetails" id ="deleteGameDetails">
+				<label for="gameDelete">Game Id for Deleting</label>
+				<input name="gameDeleteId" id="gameIdForDelete" data-clear-btn="true" value="" placeholder="Enter Game Id for Deleting"  type="text"/>
+				<input data-enhanced="true" type="button" name ="deleteGame" value="DeleteGame" id="deleteGame"/>
+				</form>
+				<div data-role="popup" id="deleteGameResponse" data-position-to="window" data-transition="turn">
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+				<p><font color="green">Game deleted successfully</font></p>
+				</div>
+			</div>
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
